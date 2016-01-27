@@ -1,0 +1,64 @@
+﻿@model Superluminal.Models.ViewModels.ParentSearch
+@{
+    ViewBag.Title = "ParentSearch";
+}
+
+<h2>ParentSearch</h2>
+
+
+
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Id, "", new { @class = "textbox" })
+                 @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Phone, "", new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="editor-field" >
+                @Html.TextBoxFor(model => model.Name, "", new { @class = "textbox",@id = "txtSearchName" })
+                
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostCode, new { @class = "control-label col-md-2" })
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.PostCode, "", new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="leftMargin col-md-10">
+                <input type="submit" id="btnSearch" value="Search" class="btn btn-default btn-success searchButton" />
+            </div>
+        </div>
+    </div>
+    <div id="container" class="ui-autocomplete"></div>
+</div>
+
+<div id="gridContainer">
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/parent")
